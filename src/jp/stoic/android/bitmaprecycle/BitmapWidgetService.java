@@ -17,6 +17,8 @@ import android.widget.RemoteViews;
 public class BitmapWidgetService extends Service {
 
 	private final static long UPDATE_PERIOD = 3*1000;
+	private final static int WIDTH = 256;
+	private final static int HEIGHT = 256;
 	
 	private Random mRand;
 	
@@ -70,14 +72,14 @@ public class BitmapWidgetService extends Service {
 	}
 	
 	private Bitmap createBitmap() {
-		Bitmap bitmap = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
+		Bitmap bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
 		Canvas cv = new Canvas(bitmap);
 		int r = mRand.nextInt(256);
 		int g = mRand.nextInt(256);
 		int b = mRand.nextInt(256);
 		Paint paint = new Paint();
 		paint.setARGB(0xFF, r, g, b);
-		cv.drawRect(0, 0, 256, 256, paint);
+		cv.drawRect(0, 0, WIDTH, HEIGHT, paint);
 		return bitmap;
 	}
 	
